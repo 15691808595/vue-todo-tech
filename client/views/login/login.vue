@@ -1,5 +1,5 @@
 <template>
-  <div></div>
+  <div>login</div>
 </template>
 
 <style lang="stylus" scoped >
