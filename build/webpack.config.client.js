@@ -24,7 +24,9 @@ const defaultPluins = [
             NODE_ENV: isDev ? '"development"' : '"production"'
         }
     }),
-    new HTMLPlugin()
+    new HTMLPlugin({
+        template:path.join(__dirname,'template.html')
+    })
 ]
 if (isDev) {
     config = merge(baseConfig, {
@@ -35,6 +37,13 @@ if (isDev) {
                     test: /\.styl/,
                     use: [
                         'vue-style-loader',
+                        /*{
+                          loader:'css-loader',
+                          options:{
+                              module:true,
+                              localIdentName: isDev ? '[path]-[name]-[hash:base64:5]' : '[hash:base64:5]',
+                          }
+                        },*/
                         'css-loader',
                         {
                             loader: 'postcss-loader',
