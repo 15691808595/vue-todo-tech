@@ -4,6 +4,7 @@ const webpack = require('webpack')
 const merge = require('webpack-merge')//帮助合并config文件
 const ExtractPlugin = require('extract-text-webpack-plugin')  //抽离css文件
 const baseConfig = require('./webpack.config.base')
+const VueClientPlugin = require('vue-server-renderer/client-plugin')
 
 const isDev = process.env.NODE_ENV === 'development'
 
@@ -29,7 +30,8 @@ const defaultPluins = [
   }),
   new HTMLPlugin({
     template: path.join(__dirname, 'template.html')
-  })
+  }),
+  new VueClientPlugin()
 ]
 if (isDev) {
   config = merge(baseConfig, {
